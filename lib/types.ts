@@ -2,6 +2,7 @@ export interface MoodEntry {
   id: string
   mood: "happy" | "neutral" | "sad"
   comment?: string
+  name:string
 }
 
 export interface MoodOption {
