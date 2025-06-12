@@ -18,7 +18,7 @@ export const POST=async(req: NextRequest)=> {
       return NextResponse.json({ error: "Invalid mood value" }, { status: 400 })
     }
 
-    const newEntry = addMoodEntry(mood, comment,name)
+    const newEntry = addMoodEntry(mood, name,comment)
     return NextResponse.json(newEntry, { status: 201 })
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 })
