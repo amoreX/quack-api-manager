@@ -6,32 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { MoodOption } from "@/lib/types"
+import { moodOptions } from "@/lib/dynamicStyles"
 import axios from "axios"
 
-const moodOptions: MoodOption[] = [
-  {
-    value: "happy",
-    emoji: "😄",
-    label: "Happy",
-    color: "text-green-600 dark:text-green-400",
-    borderColor: "border-green-300 dark:border-green-700 hover:border-green-400 dark:hover:border-green-600",
-  },
-  {
-    value: "neutral",
-    emoji: "😐",
-    label: "Neutral",
-    color: "text-gray-600 dark:text-gray-400",
-    borderColor: "border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600",
-  },
-  {
-    value: "sad",
-    emoji: "😞",
-    label: "Sad",
-    color: "text-red-600 dark:text-red-400",
-    borderColor: "border-red-300 dark:border-red-700 hover:border-red-400 dark:hover:border-red-600",
-  },
-]
 export default function MoodPage() {
   const [selectedMood, setSelectedMood] = useState<"happy" | "neutral" | "sad" | null>(null)
   const [comment, setComment] = useState("")

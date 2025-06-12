@@ -7,24 +7,9 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { MoodEntry } from "@/lib/types"
 import axios from "axios";
-
-const moodEmojis = {
-  happy: "😄",
-  neutral: "😐",
-  sad: "😞",
-}
-
-const moodLabels = {
-  happy: "Happy",
-  neutral: "Neutral",
-  sad: "Sad",
-}
-
-const moodColors = {
-  happy: "text-green-600 dark:text-green-400",
-  neutral: "text-gray-600 dark:text-gray-400",
-  sad: "text-red-600 dark:text-red-400",
-}
+import { moodEmojis } from "@/lib/dynamicStyles"
+import { moodLabels } from "@/lib/dynamicStyles"
+import { moodColors } from "@/lib/dynamicStyles"
 
 export default function AdminPage() {
   const [entries, setEntries] = useState<MoodEntry[]>([])
