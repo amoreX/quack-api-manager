@@ -10,7 +10,7 @@ A  full-stack web application that allows employees to submit their current mood
 -  Responsive UI using TailwindCSS and Shadcn/UI
 -  Dark mode support 
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Frontend**: Next.js (App Router), TypeScript, TailwindCSS, Shadcn/UI
 - **Backend**: Next.js API Routes
