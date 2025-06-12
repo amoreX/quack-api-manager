@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import { ThemeProvider } from "../../theme/theme-provider";
-// import { ThemeToggle } from "../../theme/theme-toggle";
+import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 const geistSans = Geist({
@@ -31,8 +30,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
-          <ThemeToggle />
+          <Header />
+          <main className=" mx-auto px-4 py-8">{children}</main>
         </ThemeProvider>
       </body>
     </html>
