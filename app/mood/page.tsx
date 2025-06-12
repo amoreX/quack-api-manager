@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { moodOptions } from "@/lib/dynamicStyles"
 import axios from "axios"
-
+import { toast } from "sonner"
 export default function MoodPage() {
   const [selectedMood, setSelectedMood] = useState<"happy" | "neutral" | "sad" | null>(null)
   const [comment, setComment] = useState("")
@@ -18,7 +18,7 @@ export default function MoodPage() {
 
   const handleSubmit = async () => {
     if (!selectedMood || !name.trim()) {
-      alert("Please select a mood and enter your name.")
+      toast("Please select a mood and enter your name.")
       return
     }
 
@@ -30,9 +30,14 @@ export default function MoodPage() {
         comment: comment.trim(),
         name: name.trim(),
       })
-      router.push("/admin")
+      
+      toast("Mood Submitted Succesfully.")
+      setTimeout(()=>{
+          router.push("/admin")
+
+      },1500);
     } catch (error) {
-      alert("Failed to submit mood. Please try again.")
+      toast("Failed to submit mood. Please try again.")
       console.error(error)
     } finally {
       setIsSubmitting(false)
