@@ -97,8 +97,8 @@ export default function AdminPage() {
           {entries.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">😊</div>
-              <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">No mood submissions yet</h3>
-              <p className="text-slate-500 dark:text-slate-400 mb-4">Be the first to share how you're feeling!</p>
+              <p className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">No mood submissions yet</p>
+              <p className="text-slate-500 dark:text-slate-400 mb-4">Be the first to share how you are feeling!</p>
               <Button
                 onClick={() => router.push("/mood")}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
@@ -154,7 +154,7 @@ export default function AdminPage() {
           onClick={() => router.push("/")}
           className="text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
         >
-          ← Back to Home
+           Back to Home
         </Button>
       </div>
     </div>
