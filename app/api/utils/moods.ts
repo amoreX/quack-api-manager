@@ -1,7 +1,7 @@
-import { MoodEntry } from "./types"
+import { MoodEntry } from "../../../lib/types"
  
 
-//Dummy mood Data
+
 const moodEntries: MoodEntry[] = [
   {
     id: "1",
