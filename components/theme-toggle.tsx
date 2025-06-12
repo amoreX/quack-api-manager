@@ -11,7 +11,7 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return null; // Avoids hydration mismatch on SSR
+    return null; 
   }
 
   return (
