@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AdminButton from "@/components/adminButton";
-import { moods } from "@/lib/dynamicStyles";
+import { moods } from "@/lib/moodConstants";
 
 
 

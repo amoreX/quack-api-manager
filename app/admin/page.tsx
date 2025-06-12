@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { MoodEntry } from "@/lib/types"
 import axios from "axios";
-import { moodEmojis } from "@/lib/dynamicStyles"
-import { moodLabels } from "@/lib/dynamicStyles"
-import { moodColors } from "@/lib/dynamicStyles"
+import { moodEmojis } from "@/lib/moodConstants"
+import { moodLabels } from "@/lib/moodConstants"
+import { moodColors } from "@/lib/moodConstants"
 
 export default function AdminPage() {
   const [entries, setEntries] = useState<MoodEntry[]>([])

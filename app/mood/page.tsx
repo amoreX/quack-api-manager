@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { moodOptions } from "@/lib/dynamicStyles"
+import { moodOptions } from "@/lib/moodConstants"
 import axios from "axios"
 import { toast } from "sonner"
 export default function MoodPage() {
