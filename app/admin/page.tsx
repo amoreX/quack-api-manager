@@ -120,8 +120,7 @@ export default function AdminPage() {
 
                   {entries.map((entry, index) => (
                     <TableRow
-                      key={entry.id}
-                      
+                      key={index}
                     >
                       <TableCell>
                         <div className="flex items-center gap-3">

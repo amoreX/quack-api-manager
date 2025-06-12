@@ -1,19 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getMoodEntries, addMoodEntry } from "@/lib/moods"
 
-export async function GET() {
+export const GET =async(req:any)=> {
   try {
     const entries = getMoodEntries()
     return NextResponse.json(entries)
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch mood entries" }, { status: 500 })
+    return NextResponse.json({ error: error }, { status: 500 })
   }
 }
 
-export async function POST(request: NextRequest) {
+export const POST=async(req:any)=> {
   try {
-    const body = await request.json()
-    const { mood, comment } = body
+    const { mood, comment } = await req.json();
 
     if (!mood || !["happy", "neutral", "sad"].includes(mood)) {
       return NextResponse.json({ error: "Invalid mood value" }, { status: 400 })
@@ -22,6 +21,6 @@ export async function POST(request: NextRequest) {
     const newEntry = addMoodEntry(mood, comment)
     return NextResponse.json(newEntry, { status: 201 })
   } catch (error) {
-    return NextResponse.json({ error: "Failed to create mood entry" }, { status: 500 })
+    return NextResponse.json({ error: error }, { status: 500 })
   }
 }
