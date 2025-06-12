@@ -34,7 +34,6 @@ export default function MoodPage() {
       toast("Mood Submitted Succesfully.")
       setTimeout(()=>{
           router.push("/admin")
-
       },1500);
     } catch (error) {
       toast("Failed to submit mood. Please try again.")
