@@ -5,13 +5,10 @@ export const updateApiKeys = async (
   provider: "gemini" | "claude" | "openai",
   apiKey: string,
 ): Promise<boolean> => {
-  const { data } = await axios.post(
-    "https://quackback-xwhd.onrender.com/api/key/update",
-    {
-      provider: provider,
-      apiKey: apiKey,
-    },
-  );
+  const { data } = await axios.post("http://localhost:8000/api/key/update", {
+    provider: provider,
+    apiKey: apiKey,
+  });
   return data.message;
 };
 

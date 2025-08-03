@@ -32,6 +32,7 @@ export default function Home() {
   const [newApiKey, setNewApiKey] = useState("");
   const [loading, setLoading] = useState(false);
   const [showKeys, setShowKeys] = useState<Record<number, boolean>>({});
+  const [togglingKeyId, setTogglingKeyId] = useState<number | null>(null);
 
   const providers = [
     { value: "gemini", label: "Gemini" },
@@ -39,7 +40,6 @@ export default function Home() {
     { value: "openai", label: "OpenAI" },
   ];
 
-  // Load API keys for selected provider
   useEffect(() => {
     loadApiKeys();
   }, [selectedProvider]);
@@ -57,10 +57,7 @@ export default function Home() {
   };
 
   const handleAddApiKey = async () => {
-    if (!newApiKey.trim()) {
-      return;
-    }
-
+    if (!newApiKey.trim()) return;
     try {
       setLoading(true);
       await updateApiKeys(selectedProvider, newApiKey);
@@ -75,6 +72,7 @@ export default function Home() {
 
   const handleToggleKey = async (keyId: number, currentStatus: boolean) => {
     try {
+      setTogglingKeyId(keyId);
       const newStatus = await toggleKey(keyId, !currentStatus);
       setApiKeys((keys) =>
         keys.map((key) =>
@@ -83,6 +81,8 @@ export default function Home() {
       );
     } catch (error) {
       console.log(error);
+    } finally {
+      setTogglingKeyId(null);
     }
   };
 
@@ -95,11 +95,7 @@ export default function Home() {
 
   const maskApiKey = (key: string) => {
     if (key.length <= 8) return key;
-    return (
-      key.substring(0, 4) +
-      "•".repeat(key.length - 8) +
-      key.substring(key.length - 4)
-    );
+    return `${key.slice(0, 4)}••••••••${key.slice(-4)}`;
   };
 
   return (
@@ -193,9 +189,10 @@ export default function Home() {
             <div className="space-y-4">
               {apiKeys.map((key, index) => (
                 <div key={key.id}>
-                  <div className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex-1 space-y-1">
-                      <div className="flex items-center gap-2">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between p-4 border rounded-lg gap-4">
+                    {/* Left block */}
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-center gap-2 break-all">
                         <span className="font-mono text-sm">
                           {showKeys[key.id]
                             ? key.api_key
@@ -223,18 +220,24 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
+
+                    {/* Right block */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                       <div className="flex items-center gap-2">
                         <Label htmlFor={`toggle-${key.id}`} className="text-sm">
                           {key.active ? "Active" : "Inactive"}
                         </Label>
-                        <Switch
-                          id={`toggle-${key.id}`}
-                          checked={key.active}
-                          onCheckedChange={() =>
-                            handleToggleKey(key.id, key.active)
-                          }
-                        />
+                        {togglingKeyId === key.id ? (
+                          <div className="h-5 w-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <Switch
+                            id={`toggle-${key.id}`}
+                            checked={key.active}
+                            onCheckedChange={() =>
+                              handleToggleKey(key.id, key.active)
+                            }
+                          />
+                        )}
                       </div>
                       <Badge variant={key.active ? "default" : "secondary"}>
                         {key.active ? "Active" : "Inactive"}
