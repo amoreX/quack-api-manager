@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mood Tracker",
-  description: "Employee Mood Tracker Assignment",
+  title: "Quack manager",
+  description: "Api key manager for Quack",
 };
 
 export default function RootLayout({
